@@ -21,6 +21,8 @@
 #include "McuFontDisplay.h"
 #include "Shell.h"
 #include <stdio.h>
+//#include <inttypes.h>
+#include <stdint.h>
 #if PL_CONFIG_USE_STMPE610
   #include "McuSTMPE610.h"
   #include "TouchCalibrate.h"
@@ -172,34 +174,36 @@ static void btn_b1m9(lv_obj_t *obj, lv_event_t event) {
     {
         lv_btn_set_state(child, LV_BTN_STATE_REL);
     	child = lv_obj_get_child(parent, child);
+
     }
     lv_btn_set_state(obj, LV_BTN_STATE_TGL_PR);
     int v = gain_value(obj);
+    int16_t x = (int16_t) lv_obj_get_x(parent);
+    printf("x coord : %" "d" " \n", x);
 
   }
 }
 
 
 int gain_value(lv_obj_t *obj) {
-	printf("test");
 	lv_obj_t *label=lv_obj_get_child(obj, NULL);
 	char *gain = lv_label_get_text(label);
-    printf("%s", gain);
+    printf("%s \n", gain);
 
-	if (gain == "-9dB")
+	if (strcmp(gain, "-9dB")==0)
 		return 0x3;
-	else if (gain == "-6dB")
+	else if (strcmp(gain, "-6dB")==0)
 		return 0x6;
-	else if (gain == "-3dB")
+	else if (strcmp(gain, "-3dB")==0)
 		return 0x9;
-	else if (gain == "3dB")
+	else if (strcmp(gain, "+3dB")==0)
 		return 0xF;
-	else if (gain == "6dB")
+	else if (strcmp(gain, "+6dB")==0)
 		return 0x12;
-	else if (gain == "9dB")
+	else if (strcmp(gain, "+9dB")==0)
 		return 0x15;
 	else
-		return 0xC;
+		return 0xC; //0dB
 }
 
 void GUI_SwitchToMainScreen(void) {
