@@ -168,6 +168,8 @@ static void btn_click_Demo_action(lv_obj_t *obj, lv_event_t event) {
 static void set_gain(lv_obj_t *obj, lv_event_t event) {
 
   if(event == LV_EVENT_CLICKED) {
+	  McuLED_On(LED_Blue);
+
 	  lv_obj_t *parent = lv_obj_get_parent(obj);
 	  lv_obj_t *child = lv_obj_get_child(parent, NULL);
     while (child != NULL)
@@ -180,6 +182,7 @@ static void set_gain(lv_obj_t *obj, lv_event_t event) {
     int v = gain_value(obj);
     int16_t x = (int16_t) lv_obj_get_x(parent);
     printf("x coord : %" "d" " \n", x);
+	  McuLED_Off(LED_Blue);
 
   }
 }
@@ -206,6 +209,27 @@ int gain_value(lv_obj_t *obj) {
 		return 0xC; //0dB
 }
 
+
+static void switch_btn(lv_obj_t *obj, lv_event_t event) {
+	  if(event == LV_EVENT_CLICKED) {
+		  if (lv_btn_get_state(obj)==LV_BTN_STATE_TGL_REL)
+		  {
+		    lv_btn_set_state(obj, LV_BTN_STATE_REL);
+		    McuLED_On(LED_Red);
+		    McuLED_Off(LED_Green);
+		}
+		  else
+		{
+		    lv_btn_set_state(obj, LV_BTN_STATE_TGL_PR);
+		    McuLED_On(LED_Green);
+		    McuLED_Off(LED_Red);
+		}
+		  //lv_obj_set_event_cb(obj, switch_btn);
+
+	  }
+}
+
+
 void GUI_SwitchToMainScreen(void) {
   lv_scr_load(main_screen); /* load the screen */
 }
@@ -225,25 +249,22 @@ void GUI_MainMenuCreate(void) {
   lv_obj_t *gui_win;
 
   gui_win = lv_win_create(lv_scr_act(), NULL);
-  lv_win_set_title(gui_win, "Egaliseur Audio");
+  lv_win_set_title(gui_win, "Egaliseur Audio ENIB S7-SEN");
+  lv_win_set_btn_size(gui_win, 35);
+
+
 
   /* Add control button to the header */
-  //lv_obj_t *close_btn = lv_win_add_btn(gui_win, LV_SYMBOL_CLOSE);           /* Add close button and use built-in close action */
-  //lv_obj_set_event_cb(close_btn, lv_win_close_event_cb);
+  lv_obj_t *power_btn = lv_win_add_btn(gui_win, LV_SYMBOL_POWER);           /* Add close button and use built-in close action */
+  lv_obj_set_event_cb(power_btn, switch_btn);
+  McuLED_On(LED_Red);
+
+
+
+
   //lv_win_add_btn(gui_win, LV_SYMBOL_SETTINGS);        /*Add a setup button*/
 
-/*
-  const char * btnm_map[] = {"1", "2", "3", "4", "5", "\n",
-                                    "6", "7", "8", "9", "0", "\n",
-                                    "Action1", "Action2", ""};
 
-      lv_obj_t * btnm1 = lv_btnm_create(lv_scr_act(), NULL);
-      lv_btnm_set_map(btnm1, btnm_map);
-      lv_btnm_set_btn_width(btnm1, 10, 2);
-      lv_obj_align(btnm1, NULL, LV_ALIGN_CENTER, 0, 0);
-      lv_obj_set_event_cb(btnm1, event_handler);
-
-  */
   lv_obj_t * band_1_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_align(band_1_label, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
   lv_label_set_text(band_1_label, "100Hz");
@@ -318,6 +339,8 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_event_cb(b1p0, set_gain);
   lv_obj_align(b1p0, NULL, LV_ALIGN_CENTER, 0, 15);
   lv_obj_set_width(b1p0, 44);
+  lv_btn_set_state(b1p0, LV_BTN_STATE_TGL_PR);
+
 
   label = lv_label_create(b1p0, NULL);
   lv_label_set_text(label, "0dB");
@@ -387,6 +410,8 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_event_cb(b2p0, set_gain);
   lv_obj_align(b2p0, NULL, LV_ALIGN_CENTER, 0, 15);
   lv_obj_set_width(b2p0, 44);
+  lv_btn_set_state(b2p0, LV_BTN_STATE_TGL_PR);
+
 
   label = lv_label_create(b2p0, NULL);
   lv_label_set_text(label, "0dB");
@@ -395,6 +420,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_event_cb(b2p3, set_gain);
   lv_obj_align(b2p3, NULL, LV_ALIGN_CENTER, 0, -20);
   lv_obj_set_width(b2p3, 44);
+
 
   label = lv_label_create(b2p3, NULL);
   lv_label_set_text(label, "+3dB");
@@ -458,6 +484,8 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_event_cb(b3p0, set_gain);
   lv_obj_align(b3p0, NULL, LV_ALIGN_CENTER, 0, 15);
   lv_obj_set_width(b3p0, 44);
+  lv_btn_set_state(b3p0, LV_BTN_STATE_TGL_PR);
+
 
   label = lv_label_create(b3p0, NULL);
   lv_label_set_text(label, "0dB");
@@ -527,6 +555,8 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_event_cb(b4p0, set_gain);
   lv_obj_align(b4p0, NULL, LV_ALIGN_CENTER, 0, 15);
   lv_obj_set_width(b4p0, 44);
+  lv_btn_set_state(b4p0, LV_BTN_STATE_TGL_PR);
+
 
   label = lv_label_create(b4p0, NULL);
   lv_label_set_text(label, "0dB");
@@ -597,6 +627,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_event_cb(b5p0, set_gain);
   lv_obj_align(b5p0, NULL, LV_ALIGN_CENTER,0, 15);
   lv_obj_set_width(b5p0, 44);
+  lv_btn_set_state(b5p0, LV_BTN_STATE_TGL_PR);
 
   label = lv_label_create(b5p0, NULL);
   lv_label_set_text(label, "0dB");

@@ -40,7 +40,6 @@ void APP_Run(void) {
   McuLED_On(LED_Blue);
   McuWait_Waitms(100);
   McuLED_Off(LED_Blue);
-#endif
   if (xTaskCreate(
       AppTask,  /* pointer to the task */
       "App", /* task name for kernel awareness debugging */
@@ -51,6 +50,10 @@ void APP_Run(void) {
     ) != pdPASS) {
      for(;;){} /* error! probably out of memory */
   }
+#endif
+
   vTaskStartScheduler();
   for(;;) { /* should not get here */ }
+
+
 }
