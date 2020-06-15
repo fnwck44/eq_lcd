@@ -165,7 +165,7 @@ static void btn_click_Demo_action(lv_obj_t *obj, lv_event_t event) {
 }
 
 
-static void btn_b1m9(lv_obj_t *obj, lv_event_t event) {
+static void set_gain(lv_obj_t *obj, lv_event_t event) {
 
   if(event == LV_EVENT_CLICKED) {
 	  lv_obj_t *parent = lv_obj_get_parent(obj);
@@ -244,51 +244,51 @@ void GUI_MainMenuCreate(void) {
       lv_obj_set_event_cb(btnm1, event_handler);
 
   */
-  lv_obj_t * band1 = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_align(band1, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
-  lv_label_set_text(band1, "100Hz");
-  lv_obj_set_width(band1, 48);
-  lv_obj_align(band1, NULL, LV_ALIGN_CENTER, -96, 150);
+  lv_obj_t * band_1_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_align(band_1_label, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
+  lv_label_set_text(band_1_label, "100Hz");
+  lv_obj_set_width(band_1_label, 48);
+  lv_obj_align(band_1_label, NULL, LV_ALIGN_CENTER, -96, 150);
 
-  lv_obj_t * band2 = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_align(band2, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
-  lv_label_set_text(band2, "300Hz");
-  lv_obj_set_width(band2, 48);
-  lv_obj_align(band2, NULL, LV_ALIGN_CENTER, -48, 150);
+  lv_obj_t * band_2_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_align(band_2_label, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
+  lv_label_set_text(band_2_label, "300Hz");
+  lv_obj_set_width(band_2_label, 48);
+  lv_obj_align(band_2_label, NULL, LV_ALIGN_CENTER, -48, 150);
 
-  lv_obj_t * band3 = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_align(band3, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
-  lv_label_set_text(band3, "875Hz");
-  lv_obj_set_width(band3, 48);
-  lv_obj_align(band3, NULL, LV_ALIGN_CENTER, 0, 150);
+  lv_obj_t * band_3_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_align(band_3_label, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
+  lv_label_set_text(band_3_label, "875Hz");
+  lv_obj_set_width(band_3_label, 48);
+  lv_obj_align(band_3_label, NULL, LV_ALIGN_CENTER, 0, 150);
 
-  lv_obj_t * band4 = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_align(band4, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
-  lv_label_set_text(band4, "2,4Hz");
-  lv_obj_set_width(band4, 48);
-  lv_obj_align(band4, NULL, LV_ALIGN_CENTER, 48, 150);
+  lv_obj_t * band_4_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_align(band_4_label, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
+  lv_label_set_text(band_4_label, "2,4Hz");
+  lv_obj_set_width(band_4_label, 48);
+  lv_obj_align(band_4_label, NULL, LV_ALIGN_CENTER, 48, 150);
 
-  lv_obj_t * band5 = lv_label_create(lv_scr_act(), NULL);
-  lv_label_set_align(band5, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
-  lv_label_set_text(band5, "6,9kHz");
-  lv_obj_set_width(band5, 48);
-  lv_obj_align(band5, NULL, LV_ALIGN_CENTER, 96, 150);
-
-
-
-  lv_obj_t * cont;
-
-  cont = lv_cont_create(lv_scr_act(), NULL);
-  lv_obj_set_auto_realign(cont, true);                    /*Auto realign when the size changes*/
-  lv_obj_align_origo(cont, NULL, LV_ALIGN_CENTER, 0, 0);  /*This parametrs will be sued when realigned*/
-  lv_cont_set_fit(cont, LV_FIT_TIGHT);
-  lv_cont_set_layout(cont, LV_LAYOUT_COL_M);
-  lv_obj_align(cont, NULL, LV_ALIGN_CENTER, -94, 10);
+  lv_obj_t * band_5_label = lv_label_create(lv_scr_act(), NULL);
+  lv_label_set_align(band_5_label, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
+  lv_label_set_text(band_5_label, "6,9kHz");
+  lv_obj_set_width(band_5_label, 48);
+  lv_obj_align(band_5_label, NULL, LV_ALIGN_CENTER, 96, 150);
 
 
-  lv_obj_t *b1m9 = lv_btn_create(cont, NULL);
-  lv_obj_set_event_cb(b1m9, btn_b1m9);
-  lv_obj_align(b1m9, NULL, LV_ALIGN_CENTER, -94, 120);
+
+  lv_obj_t * band_1;
+
+  band_1 = lv_cont_create(lv_scr_act(), NULL);
+  lv_obj_set_auto_realign(band_1, true);                    /*Auto realign when the size changes*/
+  lv_obj_align_origo(band_1, NULL, LV_ALIGN_CENTER, 0, 0);  /*This parametrs will be sued when realigned*/
+  lv_cont_set_fit(band_1, LV_FIT_TIGHT);
+  lv_cont_set_layout(band_1, LV_LAYOUT_COL_M);
+  lv_obj_align(band_1, NULL, LV_ALIGN_CENTER, -96, 10);
+
+
+  lv_obj_t *b1m9 = lv_btn_create(band_1, NULL);
+  lv_obj_set_event_cb(b1m9, set_gain);
+  lv_obj_align(b1m9, NULL, LV_ALIGN_CENTER, 0, 120);
   lv_obj_set_width(b1m9, 44);
   //lv_btn_set_toggle(b1m9, true);
   //lv_btn_toggle(b1m9);
@@ -298,49 +298,49 @@ void GUI_MainMenuCreate(void) {
   lv_label_set_text(label, "-9dB");
 
 
-  lv_obj_t *b1m6 = lv_btn_create(cont, NULL);
-  lv_obj_set_event_cb(b1m6, btn_b1m9);
-  lv_obj_align(b1m6, NULL, LV_ALIGN_CENTER, -94, 85);
+  lv_obj_t *b1m6 = lv_btn_create(band_1, NULL);
+  lv_obj_set_event_cb(b1m6, set_gain);
+  lv_obj_align(b1m6, NULL, LV_ALIGN_CENTER, 0, 85);
   lv_obj_set_width(b1m6, 44);
 
   label = lv_label_create(b1m6, NULL);
   lv_label_set_text(label, "-6dB");
 
-  lv_obj_t *b1m3 = lv_btn_create(cont, NULL);
-  lv_obj_set_event_cb(b1m3, btn_b1m9);
-  lv_obj_align(b1m3, NULL, LV_ALIGN_CENTER, -94, 50);
+  lv_obj_t *b1m3 = lv_btn_create(band_1, NULL);
+  lv_obj_set_event_cb(b1m3, set_gain);
+  lv_obj_align(b1m3, NULL, LV_ALIGN_CENTER, 0, 50);
   lv_obj_set_width(b1m3, 44);
 
   label = lv_label_create(b1m3, NULL);
   lv_label_set_text(label, "-3dB");
 
-  lv_obj_t *b1p0 = lv_btn_create(cont, NULL);
-  lv_obj_set_event_cb(b1p0, btn_b1m9);
-  lv_obj_align(b1p0, NULL, LV_ALIGN_CENTER, -94, 15);
+  lv_obj_t *b1p0 = lv_btn_create(band_1, NULL);
+  lv_obj_set_event_cb(b1p0, set_gain);
+  lv_obj_align(b1p0, NULL, LV_ALIGN_CENTER, 0, 15);
   lv_obj_set_width(b1p0, 44);
 
   label = lv_label_create(b1p0, NULL);
   lv_label_set_text(label, "0dB");
 
-  lv_obj_t *b1p3 = lv_btn_create(cont, NULL);
-  lv_obj_set_event_cb(b1p3, btn_b1m9);
-  lv_obj_align(b1p3, NULL, LV_ALIGN_CENTER, -94, -20);
+  lv_obj_t *b1p3 = lv_btn_create(band_1, NULL);
+  lv_obj_set_event_cb(b1p3, set_gain);
+  lv_obj_align(b1p3, NULL, LV_ALIGN_CENTER, 0, -20);
   lv_obj_set_width(b1p3, 44);
 
   label = lv_label_create(b1p3, NULL);
   lv_label_set_text(label, "+3dB");
 
-  lv_obj_t *b1p6 = lv_btn_create(cont, NULL);
-  lv_obj_set_event_cb(b1p6, btn_b1m9);
-  lv_obj_align(b1p6, NULL, LV_ALIGN_CENTER, -94, -55);
+  lv_obj_t *b1p6 = lv_btn_create(band_1, NULL);
+  lv_obj_set_event_cb(b1p6, set_gain);
+  lv_obj_align(b1p6, NULL, LV_ALIGN_CENTER, 0, -55);
   lv_obj_set_width(b1p6, 44);
 
   label = lv_label_create(b1p6, NULL);
   lv_label_set_text(label, "+6dB");
 
-  lv_obj_t *b1p9 = lv_btn_create(cont, NULL);
-  lv_obj_set_event_cb(b1p9, btn_b1m9);
-  lv_obj_align(b1p9, NULL, LV_ALIGN_CENTER, -94, -90);
+  lv_obj_t *b1p9 = lv_btn_create(band_1, NULL);
+  lv_obj_set_event_cb(b1p9, set_gain);
+  lv_obj_align(b1p9, NULL, LV_ALIGN_CENTER, 0, -90);
   lv_obj_set_width(b1p9, 44);
 
   label = lv_label_create(b1p9, NULL);
@@ -348,58 +348,68 @@ void GUI_MainMenuCreate(void) {
 
 
 
-  lv_obj_t *b2m9 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b2m9, event_handler);
-  lv_obj_align(b2m9, NULL, LV_ALIGN_CENTER, -46, 120);
+
+  lv_obj_t * band_2;
+
+  band_2 = lv_cont_create(lv_scr_act(), NULL);
+  lv_obj_set_auto_realign(band_2, true);                    /*Auto realign when the size changes*/
+  lv_obj_align_origo(band_2, NULL, LV_ALIGN_CENTER, 0, 0);  /*This parametrs will be sued when realigned*/
+  lv_cont_set_fit(band_2, LV_FIT_TIGHT);
+  lv_cont_set_layout(band_2, LV_LAYOUT_COL_M);
+  lv_obj_align(band_2, NULL, LV_ALIGN_CENTER, -48, 10);
+
+  lv_obj_t *b2m9 = lv_btn_create(band_2, NULL);
+  lv_obj_set_event_cb(b2m9, set_gain);
+  lv_obj_align(b2m9, NULL, LV_ALIGN_CENTER, 0, 120);
   lv_obj_set_width(b2m9, 44);
 
   label = lv_label_create(b2m9, NULL);
   lv_label_set_text(label, "-9dB");
 
 
-  lv_obj_t *b2m6 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b2m6, event_handler);
-  lv_obj_align(b2m6, NULL, LV_ALIGN_CENTER, -46, 85);
+  lv_obj_t *b2m6 = lv_btn_create(band_2, NULL);
+  lv_obj_set_event_cb(b2m6, set_gain);
+  lv_obj_align(b2m6, NULL, LV_ALIGN_CENTER, 0, 85);
   lv_obj_set_width(b2m6, 44);
 
   label = lv_label_create(b2m6, NULL);
   lv_label_set_text(label, "-6dB");
 
-  lv_obj_t *b2m3 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b2m3, event_handler);
-  lv_obj_align(b2m3, NULL, LV_ALIGN_CENTER, -46, 50);
+  lv_obj_t *b2m3 = lv_btn_create(band_2, NULL);
+  lv_obj_set_event_cb(b2m3, set_gain);
+  lv_obj_align(b2m3, NULL, LV_ALIGN_CENTER, 0, 50);
   lv_obj_set_width(b2m3, 44);
 
   label = lv_label_create(b2m3, NULL);
   lv_label_set_text(label, "-3dB");
 
-  lv_obj_t *b2p0 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b2p0, event_handler);
-  lv_obj_align(b2p0, NULL, LV_ALIGN_CENTER, -46, 15);
+  lv_obj_t *b2p0 = lv_btn_create(band_2, NULL);
+  lv_obj_set_event_cb(b2p0, set_gain);
+  lv_obj_align(b2p0, NULL, LV_ALIGN_CENTER, 0, 15);
   lv_obj_set_width(b2p0, 44);
 
   label = lv_label_create(b2p0, NULL);
   lv_label_set_text(label, "0dB");
 
-  lv_obj_t *b2p3 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b2p3, event_handler);
-  lv_obj_align(b2p3, NULL, LV_ALIGN_CENTER, -46, -20);
+  lv_obj_t *b2p3 = lv_btn_create(band_2, NULL);
+  lv_obj_set_event_cb(b2p3, set_gain);
+  lv_obj_align(b2p3, NULL, LV_ALIGN_CENTER, 0, -20);
   lv_obj_set_width(b2p3, 44);
 
   label = lv_label_create(b2p3, NULL);
   lv_label_set_text(label, "+3dB");
 
-  lv_obj_t *b2p6 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b2p6, event_handler);
-  lv_obj_align(b2p6, NULL, LV_ALIGN_CENTER, -46, -55);
+  lv_obj_t *b2p6 = lv_btn_create(band_2, NULL);
+  lv_obj_set_event_cb(b2p6, set_gain);
+  lv_obj_align(b2p6, NULL, LV_ALIGN_CENTER, 0, -55);
   lv_obj_set_width(b2p6, 44);
 
   label = lv_label_create(b2p6, NULL);
   lv_label_set_text(label, "+6dB");
 
-  lv_obj_t *b2p9 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b2p9, event_handler);
-  lv_obj_align(b2p9, NULL, LV_ALIGN_CENTER, -46, -90);
+  lv_obj_t *b2p9 = lv_btn_create(band_2, NULL);
+  lv_obj_set_event_cb(b2p9, set_gain);
+  lv_obj_align(b2p9, NULL, LV_ALIGN_CENTER, 0, -90);
   lv_obj_set_width(b2p9, 44);
 
   label = lv_label_create(b2p9, NULL);
@@ -407,58 +417,70 @@ void GUI_MainMenuCreate(void) {
 
 
 
-  lv_obj_t *b3m9 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b3m9, event_handler);
-  lv_obj_align(b3m9, NULL, LV_ALIGN_CENTER, 2, 120);
+
+
+  lv_obj_t * band_3;
+
+  band_3 = lv_cont_create(lv_scr_act(), NULL);
+  lv_obj_set_auto_realign(band_3, true);                    /*Auto realign when the size changes*/
+  lv_obj_align_origo(band_3, NULL, LV_ALIGN_CENTER, 0, 0);  /*This parametrs will be sued when realigned*/
+  lv_cont_set_fit(band_3, LV_FIT_TIGHT);
+  lv_cont_set_layout(band_3, LV_LAYOUT_COL_M);
+  lv_obj_align(band_3, NULL, LV_ALIGN_CENTER, 0, 10);
+
+
+  lv_obj_t *b3m9 = lv_btn_create(band_3, NULL);
+  lv_obj_set_event_cb(b3m9, set_gain);
+  lv_obj_align(b3m9, NULL, LV_ALIGN_CENTER, 0, 120);
   lv_obj_set_width(b3m9, 44);
 
   label = lv_label_create(b3m9, NULL);
   lv_label_set_text(label, "-9dB");
 
 
-  lv_obj_t *b3m6 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b3m6, event_handler);
-  lv_obj_align(b3m6, NULL, LV_ALIGN_CENTER, 2, 85);
+  lv_obj_t *b3m6 = lv_btn_create(band_3, NULL);
+  lv_obj_set_event_cb(b3m6, set_gain);
+  lv_obj_align(b3m6, NULL, LV_ALIGN_CENTER, 0, 85);
   lv_obj_set_width(b3m6, 44);
 
   label = lv_label_create(b3m6, NULL);
   lv_label_set_text(label, "-6dB");
 
-  lv_obj_t *b3m3 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b3m3, event_handler);
-  lv_obj_align(b3m3, NULL, LV_ALIGN_CENTER, 2, 50);
+  lv_obj_t *b3m3 = lv_btn_create(band_3, NULL);
+  lv_obj_set_event_cb(b3m3, set_gain);
+  lv_obj_align(b3m3, NULL, LV_ALIGN_CENTER, 0, 50);
   lv_obj_set_width(b3m3, 44);
 
   label = lv_label_create(b3m3, NULL);
   lv_label_set_text(label, "-3dB");
 
-  lv_obj_t *b3p0 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b3p0, event_handler);
-  lv_obj_align(b3p0, NULL, LV_ALIGN_CENTER, 2, 15);
+  lv_obj_t *b3p0 = lv_btn_create(band_3, NULL);
+  lv_obj_set_event_cb(b3p0, set_gain);
+  lv_obj_align(b3p0, NULL, LV_ALIGN_CENTER, 0, 15);
   lv_obj_set_width(b3p0, 44);
 
   label = lv_label_create(b3p0, NULL);
   lv_label_set_text(label, "0dB");
 
-  lv_obj_t *b3p3 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b3p3, event_handler);
-  lv_obj_align(b3p3, NULL, LV_ALIGN_CENTER, 2, -20);
+  lv_obj_t *b3p3 = lv_btn_create(band_3, NULL);
+  lv_obj_set_event_cb(b3p3, set_gain);
+  lv_obj_align(b3p3, NULL, LV_ALIGN_CENTER, 0, -20);
   lv_obj_set_width(b3p3, 44);
 
   label = lv_label_create(b3p3, NULL);
   lv_label_set_text(label, "+3dB");
 
-  lv_obj_t *b3p6 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b3p6, event_handler);
-  lv_obj_align(b3p6, NULL, LV_ALIGN_CENTER, 2, -55);
+  lv_obj_t *b3p6 = lv_btn_create(band_3, NULL);
+  lv_obj_set_event_cb(b3p6, set_gain);
+  lv_obj_align(b3p6, NULL, LV_ALIGN_CENTER, 0, -55);
   lv_obj_set_width(b3p6, 44);
 
   label = lv_label_create(b3p6, NULL);
   lv_label_set_text(label, "+6dB");
 
-  lv_obj_t *b3p9 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b3p9, event_handler);
-  lv_obj_align(b3p9, NULL, LV_ALIGN_CENTER, 2, -90);
+  lv_obj_t *b3p9 = lv_btn_create(band_3, NULL);
+  lv_obj_set_event_cb(b3p9, set_gain);
+  lv_obj_align(b3p9, NULL, LV_ALIGN_CENTER, 0, -90);
   lv_obj_set_width(b3p9, 44);
 
   label = lv_label_create(b3p9, NULL);
@@ -466,58 +488,68 @@ void GUI_MainMenuCreate(void) {
 
 
 
-  lv_obj_t *b4m9 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b4m9, event_handler);
-  lv_obj_align(b4m9, NULL, LV_ALIGN_CENTER, 50, 120);
+  lv_obj_t * band_4;
+
+  band_4 = lv_cont_create(lv_scr_act(), NULL);
+  lv_obj_set_auto_realign(band_4, true);                    /*Auto realign when the size changes*/
+  lv_obj_align_origo(band_4, NULL, LV_ALIGN_CENTER, 0, 0);  /*This parametrs will be sued when realigned*/
+  lv_cont_set_fit(band_4, LV_FIT_TIGHT);
+  lv_cont_set_layout(band_4, LV_LAYOUT_COL_M);
+  lv_obj_align(band_4, NULL, LV_ALIGN_CENTER, 48, 10);
+
+
+  lv_obj_t *b4m9 = lv_btn_create(band_4, NULL);
+  lv_obj_set_event_cb(b4m9, set_gain);
+  lv_obj_align(b4m9, NULL, LV_ALIGN_CENTER, 0, 120);
   lv_obj_set_width(b4m9, 44);
 
   label = lv_label_create(b4m9, NULL);
   lv_label_set_text(label, "-9dB");
 
 
-  lv_obj_t *b4m6 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b4m6, event_handler);
-  lv_obj_align(b4m6, NULL, LV_ALIGN_CENTER, 50, 85);
+  lv_obj_t *b4m6 = lv_btn_create(band_4, NULL);
+  lv_obj_set_event_cb(b4m6, set_gain);
+  lv_obj_align(b4m6, NULL, LV_ALIGN_CENTER, 0, 85);
   lv_obj_set_width(b4m6, 44);
 
   label = lv_label_create(b4m6, NULL);
   lv_label_set_text(label, "-6dB");
 
-  lv_obj_t *b4m3 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b4m3, event_handler);
-  lv_obj_align(b4m3, NULL, LV_ALIGN_CENTER, 50, 50);
+  lv_obj_t *b4m3 = lv_btn_create(band_4, NULL);
+  lv_obj_set_event_cb(b4m3, set_gain);
+  lv_obj_align(b4m3, NULL, LV_ALIGN_CENTER, 0, 50);
   lv_obj_set_width(b4m3, 44);
 
   label = lv_label_create(b4m3, NULL);
   lv_label_set_text(label, "-3dB");
 
-  lv_obj_t *b4p0 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b4p0, event_handler);
-  lv_obj_align(b4p0, NULL, LV_ALIGN_CENTER, 50, 15);
+  lv_obj_t *b4p0 = lv_btn_create(band_4, NULL);
+  lv_obj_set_event_cb(b4p0, set_gain);
+  lv_obj_align(b4p0, NULL, LV_ALIGN_CENTER, 0, 15);
   lv_obj_set_width(b4p0, 44);
 
   label = lv_label_create(b4p0, NULL);
   lv_label_set_text(label, "0dB");
 
-  lv_obj_t *b4p3 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b4p3, event_handler);
-  lv_obj_align(b4p3, NULL, LV_ALIGN_CENTER, 50, -20);
+  lv_obj_t *b4p3 = lv_btn_create(band_4, NULL);
+  lv_obj_set_event_cb(b4p3, set_gain);
+  lv_obj_align(b4p3, NULL, LV_ALIGN_CENTER, 0, -20);
   lv_obj_set_width(b4p3, 44);
 
   label = lv_label_create(b4p3, NULL);
   lv_label_set_text(label, "+3dB");
 
-  lv_obj_t *b4p6 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b4p6, event_handler);
-  lv_obj_align(b4p6, NULL, LV_ALIGN_CENTER, 50, -55);
+  lv_obj_t *b4p6 = lv_btn_create(band_4, NULL);
+  lv_obj_set_event_cb(b4p6, set_gain);
+  lv_obj_align(b4p6, NULL, LV_ALIGN_CENTER, 0, -55);
   lv_obj_set_width(b4p6, 44);
 
   label = lv_label_create(b4p6, NULL);
   lv_label_set_text(label, "+6dB");
 
-  lv_obj_t *b4p9 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b4p9, event_handler);
-  lv_obj_align(b4p9, NULL, LV_ALIGN_CENTER, 50, -90);
+  lv_obj_t *b4p9 = lv_btn_create(band_4, NULL);
+  lv_obj_set_event_cb(b4p9, set_gain);
+  lv_obj_align(b4p9, NULL, LV_ALIGN_CENTER, 0, -90);
   lv_obj_set_width(b4p9, 44);
 
   label = lv_label_create(b4p9, NULL);
@@ -526,58 +558,68 @@ void GUI_MainMenuCreate(void) {
 
 
 
-  lv_obj_t *b5m9 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b5m9, event_handler);
-  lv_obj_align(b5m9, NULL, LV_ALIGN_CENTER, 98, 120);
+
+  lv_obj_t * band_5;
+
+  band_5 = lv_cont_create(lv_scr_act(), NULL);
+  lv_obj_set_auto_realign(band_5, true);                    /*Auto realign when the size changes*/
+  lv_obj_align_origo(band_5, NULL, LV_ALIGN_CENTER, 0, 0);  /*This parametrs will be sued when realigned*/
+  lv_cont_set_fit(band_5, LV_FIT_TIGHT);
+  lv_cont_set_layout(band_5, LV_LAYOUT_COL_M);
+  lv_obj_align(band_5, NULL, LV_ALIGN_CENTER, 96, 10);
+
+  lv_obj_t *b5m9 = lv_btn_create(band_5, NULL);
+  lv_obj_set_event_cb(b5m9, set_gain);
+  lv_obj_align(b5m9, NULL, LV_ALIGN_CENTER,0, 120);
   lv_obj_set_width(b5m9, 44);
 
   label = lv_label_create(b5m9, NULL);
   lv_label_set_text(label, "-9dB");
 
 
-  lv_obj_t *b5m6 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b5m6, event_handler);
-  lv_obj_align(b5m6, NULL, LV_ALIGN_CENTER, 98, 85);
+  lv_obj_t *b5m6 = lv_btn_create(band_5, NULL);
+  lv_obj_set_event_cb(b5m6, set_gain);
+  lv_obj_align(b5m6, NULL, LV_ALIGN_CENTER,0, 85);
   lv_obj_set_width(b5m6, 44);
 
   label = lv_label_create(b5m6, NULL);
   lv_label_set_text(label, "-6dB");
 
-  lv_obj_t *b5m3 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b5m3, event_handler);
-  lv_obj_align(b5m3, NULL, LV_ALIGN_CENTER, 98, 50);
+  lv_obj_t *b5m3 = lv_btn_create(band_5, NULL);
+  lv_obj_set_event_cb(b5m3, set_gain);
+  lv_obj_align(b5m3, NULL, LV_ALIGN_CENTER,0, 50);
   lv_obj_set_width(b5m3, 44);
 
   label = lv_label_create(b5m3, NULL);
   lv_label_set_text(label, "-3dB");
 
-  lv_obj_t *b5p0 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b5p0, event_handler);
-  lv_obj_align(b5p0, NULL, LV_ALIGN_CENTER, 98, 15);
+  lv_obj_t *b5p0 = lv_btn_create(band_5, NULL);
+  lv_obj_set_event_cb(b5p0, set_gain);
+  lv_obj_align(b5p0, NULL, LV_ALIGN_CENTER,0, 15);
   lv_obj_set_width(b5p0, 44);
 
   label = lv_label_create(b5p0, NULL);
   lv_label_set_text(label, "0dB");
 
-  lv_obj_t *b5p3 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b5p3, event_handler);
-  lv_obj_align(b5p3, NULL, LV_ALIGN_CENTER, 98, -20);
+  lv_obj_t *b5p3 = lv_btn_create(band_5, NULL);
+  lv_obj_set_event_cb(b5p3, set_gain);
+  lv_obj_align(b5p3, NULL, LV_ALIGN_CENTER,0, -20);
   lv_obj_set_width(b5p3, 44);
 
   label = lv_label_create(b5p3, NULL);
   lv_label_set_text(label, "+3dB");
 
-  lv_obj_t *b5p6 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b5p6, event_handler);
-  lv_obj_align(b5p6, NULL, LV_ALIGN_CENTER, 98, -55);
+  lv_obj_t *b5p6 = lv_btn_create(band_5, NULL);
+  lv_obj_set_event_cb(b5p6, set_gain);
+  lv_obj_align(b5p6, NULL, LV_ALIGN_CENTER,0, -55);
   lv_obj_set_width(b5p6, 44);
 
   label = lv_label_create(b5p6, NULL);
   lv_label_set_text(label, "+6dB");
 
-  lv_obj_t *b5p9 = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_event_cb(b5p9, event_handler);
-  lv_obj_align(b5p9, NULL, LV_ALIGN_CENTER, 98, -90);
+  lv_obj_t *b5p9 = lv_btn_create(band_5, NULL);
+  lv_obj_set_event_cb(b5p9, set_gain);
+  lv_obj_align(b5p9, NULL, LV_ALIGN_CENTER,0, -90);
   lv_obj_set_width(b5p9, 44);
 
   label = lv_label_create(b5p9, NULL);
