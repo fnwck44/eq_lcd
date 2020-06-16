@@ -152,19 +152,8 @@ static void event_handler(lv_obj_t *obj, lv_event_t event) {
   }
 }
 
-static void btn_click_SysMon_action(lv_obj_t *obj, lv_event_t event) {
-  if(event == LV_EVENT_CLICKED) {
-    GUI_SysMon_Create();
-  }
-}
 
-static void btn_click_Demo_action(lv_obj_t *obj, lv_event_t event) {
-  if(event == LV_EVENT_CLICKED) {
-    GUI_Demo_Create();
-  }
-}
-
-
+/* event handler for EQ buttons that set the gain for the corresponding band */
 static void set_gain(lv_obj_t *obj, lv_event_t event) {
 
   if(event == LV_EVENT_CLICKED) {
@@ -180,14 +169,34 @@ static void set_gain(lv_obj_t *obj, lv_event_t event) {
     }
     lv_btn_set_state(obj, LV_BTN_STATE_TGL_PR);
     int v = gain_value(obj);
-    int16_t x = (int16_t) lv_obj_get_x(parent);
-    printf("x coord : %" "d" " \n", x);
+    int b = band_coord(parent);
+    // Write the gain value in the specific register of EQ band
+    //TODO
+    //WM8904_WriteRegister((wm8904_handle_t *)((uint32_t)(codecHandle->codecDevHandle)), b , v);
 	  McuLED_Off(LED_Blue);
+
+	return 1;
 
   }
 }
+/* Return the register address of the band by the EQ buttons container x display coord */
+int band_coord(lv_obj_t *obj) {
+    int16_t x = (int16_t) lv_obj_get_x(obj);
+    printf("x coord : %" "d" "/n", x);
+    if (x == 0)
+    	return 0x87; // Band 1 register address
+    else if (x==48)
+    	return 0x88; // Band 2
+    else if (x==96)
+    	return 0x89; //Band 3
+    else if (x==144)
+    	return 0x8A; //Band 4
+    else if (x==192)
+    	return 0x8B; //Band 5
+}
 
 
+/* Return the binary value of the gain for band registers by the EQ buttons labels */
 int gain_value(lv_obj_t *obj) {
 	lv_obj_t *label=lv_obj_get_child(obj, NULL);
 	char *gain = lv_label_get_text(label);
@@ -209,7 +218,7 @@ int gain_value(lv_obj_t *obj) {
 		return 0xC; //0dB
 }
 
-
+/* Power button handler that turn on and off the EQ */
 static void switch_btn(lv_obj_t *obj, lv_event_t event) {
 	  if(event == LV_EVENT_CLICKED) {
 		  if (lv_btn_get_state(obj)==LV_BTN_STATE_TGL_REL)
@@ -217,22 +226,22 @@ static void switch_btn(lv_obj_t *obj, lv_event_t event) {
 		    lv_btn_set_state(obj, LV_BTN_STATE_REL);
 		    McuLED_On(LED_Red);
 		    McuLED_Off(LED_Green);
+		    //TODO Turn off
+		    // WM8904_WriteRegister((wm8904_handle_t *)((uint32_t)(codecHandle->codecDevHandle)), 0x86 , 0x0);
 		}
 		  else
 		{
 		    lv_btn_set_state(obj, LV_BTN_STATE_TGL_PR);
 		    McuLED_On(LED_Green);
 		    McuLED_Off(LED_Red);
+		    // TODO Turn On
+		    //WM8904_WriteRegister((wm8904_handle_t *)((uint32_t)(codecHandle->codecDevHandle)), 0x86 , 0x1);
 		}
 		  //lv_obj_set_event_cb(obj, switch_btn);
 
 	  }
 }
 
-
-void GUI_SwitchToMainScreen(void) {
-  lv_scr_load(main_screen); /* load the screen */
-}
 
 void GUI_MainMenuCreate(void) {
 	lv_obj_t * label;
@@ -262,8 +271,7 @@ void GUI_MainMenuCreate(void) {
 
 
 
-  //lv_win_add_btn(gui_win, LV_SYMBOL_SETTINGS);        /*Add a setup button*/
-
+  // EQ buttons, container and labels
 
   lv_obj_t * band_1_label = lv_label_create(lv_scr_act(), NULL);
   lv_label_set_align(band_1_label, LV_LABEL_ALIGN_CENTER);       /*Center aligned lines*/
@@ -735,46 +743,6 @@ static void GuiTask(void *p) {
 #endif
   GUI_MainMenuCreate();
   for(;;) {
-#if 0
-    uint32_t notifcationValue;
-
-    (void)xTaskNotifyWait(0UL, GUI_SET_ORIENTATION_LANDSCAPE|GUI_SET_ORIENTATION_LANDSCAPE180|GUI_SET_ORIENTATION_PORTRAIT|GUI_SET_ORIENTATION_PORTRAIT180, &notifcationValue, 0); /* check flags */
-    if (notifcationValue!=0) {
-      lv_area_t area;
-
-      if (notifcationValue&GUI_SET_ORIENTATION_LANDSCAPE) {
-        McuGDisplaySSD1306_SetDisplayOrientation(McuGDisplaySSD1306_ORIENTATION_LANDSCAPE);
-        area.x1 = 0;
-        area.y1 = 0;
-        area.x2 = McuGDisplaySSD1306_GetWidth()-1;
-        area.y2 = McuGDisplaySSD1306_GetHeight()-1;
-        lv_inv_area(&area);
-        lv_refr_now();
-      } else if (notifcationValue&GUI_SET_ORIENTATION_LANDSCAPE180) {
-        McuGDisplaySSD1306_SetDisplayOrientation(McuGDisplaySSD1306_ORIENTATION_LANDSCAPE180);
-        area.x1 = 0;
-        area.y1 = 0;
-        area.x2 = McuGDisplaySSD1306_GetWidth()-1;
-        area.y2 = McuGDisplaySSD1306_GetHeight()-1;
-        lv_inv_area(&area);
-      } else if (notifcationValue&GUI_SET_ORIENTATION_PORTRAIT) {
-        McuGDisplaySSD1306_SetDisplayOrientation(McuGDisplaySSD1306_ORIENTATION_PORTRAIT);
-        area.x1 = 0;
-        area.y1 = 0;
-        area.x2 = McuGDisplaySSD1306_GetWidth()-1;
-        area.y2 = McuGDisplaySSD1306_GetHeight()-1;
-        lv_inv_area(&area);
-      } else if (notifcationValue&GUI_SET_ORIENTATION_PORTRAIT180) {
-        McuGDisplaySSD1306_SetDisplayOrientation(McuGDisplaySSD1306_ORIENTATION_PORTRAIT180);
-        area.x1 = 0;
-        area.y1 = 0;
-        area.x2 = McuGDisplaySSD1306_GetWidth()-1;
-        area.y2 = McuGDisplaySSD1306_GetHeight()-1;
-        lv_inv_area(&area);
-        lv_obj_invalidate(lv_scr_act());
-      }
-    }
-#endif
     LV_Task(); /* call this every 1-20 ms */
     vTaskDelay(pdMS_TO_TICKS(10));
   }
