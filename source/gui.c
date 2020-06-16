@@ -324,7 +324,7 @@ void GUI_MainMenuCreate(void) {
 
 
   label = lv_label_create(b1m9, NULL);
-  lv_label_set_text(label, "-9dB");
+  lv_label_set_text(label, "+9dB");
 
 
   lv_obj_t *b1m6 = lv_btn_create(band_1, NULL);
@@ -333,7 +333,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b1m6, 44);
 
   label = lv_label_create(b1m6, NULL);
-  lv_label_set_text(label, "-6dB");
+  lv_label_set_text(label, "+6dB");
 
   lv_obj_t *b1m3 = lv_btn_create(band_1, NULL);
   lv_obj_set_event_cb(b1m3, set_gain);
@@ -341,7 +341,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b1m3, 44);
 
   label = lv_label_create(b1m3, NULL);
-  lv_label_set_text(label, "-3dB");
+  lv_label_set_text(label, "+3dB");
 
   lv_obj_t *b1p0 = lv_btn_create(band_1, NULL);
   lv_obj_set_event_cb(b1p0, set_gain);
@@ -359,7 +359,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b1p3, 44);
 
   label = lv_label_create(b1p3, NULL);
-  lv_label_set_text(label, "+3dB");
+  lv_label_set_text(label, "-3dB");
 
   lv_obj_t *b1p6 = lv_btn_create(band_1, NULL);
   lv_obj_set_event_cb(b1p6, set_gain);
@@ -367,7 +367,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b1p6, 44);
 
   label = lv_label_create(b1p6, NULL);
-  lv_label_set_text(label, "+6dB");
+  lv_label_set_text(label, "-6dB");
 
   lv_obj_t *b1p9 = lv_btn_create(band_1, NULL);
   lv_obj_set_event_cb(b1p9, set_gain);
@@ -375,7 +375,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b1p9, 44);
 
   label = lv_label_create(b1p9, NULL);
-  lv_label_set_text(label, "+9dB");
+  lv_label_set_text(label, "-9dB");
 
 
 
@@ -395,7 +395,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b2m9, 44);
 
   label = lv_label_create(b2m9, NULL);
-  lv_label_set_text(label, "-9dB");
+  lv_label_set_text(label, "+9dB");
 
 
   lv_obj_t *b2m6 = lv_btn_create(band_2, NULL);
@@ -404,7 +404,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b2m6, 44);
 
   label = lv_label_create(b2m6, NULL);
-  lv_label_set_text(label, "-6dB");
+  lv_label_set_text(label, "+6dB");
 
   lv_obj_t *b2m3 = lv_btn_create(band_2, NULL);
   lv_obj_set_event_cb(b2m3, set_gain);
@@ -412,7 +412,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b2m3, 44);
 
   label = lv_label_create(b2m3, NULL);
-  lv_label_set_text(label, "-3dB");
+  lv_label_set_text(label, "+3dB");
 
   lv_obj_t *b2p0 = lv_btn_create(band_2, NULL);
   lv_obj_set_event_cb(b2p0, set_gain);
@@ -431,7 +431,7 @@ void GUI_MainMenuCreate(void) {
 
 
   label = lv_label_create(b2p3, NULL);
-  lv_label_set_text(label, "+3dB");
+  lv_label_set_text(label, "-3dB");
 
   lv_obj_t *b2p6 = lv_btn_create(band_2, NULL);
   lv_obj_set_event_cb(b2p6, set_gain);
@@ -439,7 +439,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b2p6, 44);
 
   label = lv_label_create(b2p6, NULL);
-  lv_label_set_text(label, "+6dB");
+  lv_label_set_text(label, "-6dB");
 
   lv_obj_t *b2p9 = lv_btn_create(band_2, NULL);
   lv_obj_set_event_cb(b2p9, set_gain);
@@ -447,7 +447,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b2p9, 44);
 
   label = lv_label_create(b2p9, NULL);
-  lv_label_set_text(label, "+9dB");
+  lv_label_set_text(label, "-9dB");
 
 
 
@@ -469,7 +469,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b3m9, 44);
 
   label = lv_label_create(b3m9, NULL);
-  lv_label_set_text(label, "-9dB");
+  lv_label_set_text(label, "+9dB");
 
 
   lv_obj_t *b3m6 = lv_btn_create(band_3, NULL);
@@ -478,7 +478,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b3m6, 44);
 
   label = lv_label_create(b3m6, NULL);
-  lv_label_set_text(label, "-6dB");
+  lv_label_set_text(label, "+6dB");
 
   lv_obj_t *b3m3 = lv_btn_create(band_3, NULL);
   lv_obj_set_event_cb(b3m3, set_gain);
@@ -486,7 +486,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b3m3, 44);
 
   label = lv_label_create(b3m3, NULL);
-  lv_label_set_text(label, "-3dB");
+  lv_label_set_text(label, "+3dB");
 
   lv_obj_t *b3p0 = lv_btn_create(band_3, NULL);
   lv_obj_set_event_cb(b3p0, set_gain);
@@ -504,7 +504,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b3p3, 44);
 
   label = lv_label_create(b3p3, NULL);
-  lv_label_set_text(label, "+3dB");
+  lv_label_set_text(label, "-3dB");
 
   lv_obj_t *b3p6 = lv_btn_create(band_3, NULL);
   lv_obj_set_event_cb(b3p6, set_gain);
@@ -512,7 +512,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b3p6, 44);
 
   label = lv_label_create(b3p6, NULL);
-  lv_label_set_text(label, "+6dB");
+  lv_label_set_text(label, "-6dB");
 
   lv_obj_t *b3p9 = lv_btn_create(band_3, NULL);
   lv_obj_set_event_cb(b3p9, set_gain);
@@ -520,7 +520,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b3p9, 44);
 
   label = lv_label_create(b3p9, NULL);
-  lv_label_set_text(label, "+9dB");
+  lv_label_set_text(label, "-9dB");
 
 
 
@@ -540,7 +540,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b4m9, 44);
 
   label = lv_label_create(b4m9, NULL);
-  lv_label_set_text(label, "-9dB");
+  lv_label_set_text(label, "+9dB");
 
 
   lv_obj_t *b4m6 = lv_btn_create(band_4, NULL);
@@ -549,7 +549,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b4m6, 44);
 
   label = lv_label_create(b4m6, NULL);
-  lv_label_set_text(label, "-6dB");
+  lv_label_set_text(label, "+6dB");
 
   lv_obj_t *b4m3 = lv_btn_create(band_4, NULL);
   lv_obj_set_event_cb(b4m3, set_gain);
@@ -557,7 +557,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b4m3, 44);
 
   label = lv_label_create(b4m3, NULL);
-  lv_label_set_text(label, "-3dB");
+  lv_label_set_text(label, "+3dB");
 
   lv_obj_t *b4p0 = lv_btn_create(band_4, NULL);
   lv_obj_set_event_cb(b4p0, set_gain);
@@ -575,7 +575,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b4p3, 44);
 
   label = lv_label_create(b4p3, NULL);
-  lv_label_set_text(label, "+3dB");
+  lv_label_set_text(label, "-3dB");
 
   lv_obj_t *b4p6 = lv_btn_create(band_4, NULL);
   lv_obj_set_event_cb(b4p6, set_gain);
@@ -583,7 +583,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b4p6, 44);
 
   label = lv_label_create(b4p6, NULL);
-  lv_label_set_text(label, "+6dB");
+  lv_label_set_text(label, "-6dB");
 
   lv_obj_t *b4p9 = lv_btn_create(band_4, NULL);
   lv_obj_set_event_cb(b4p9, set_gain);
@@ -591,7 +591,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b4p9, 44);
 
   label = lv_label_create(b4p9, NULL);
-  lv_label_set_text(label, "+9dB");
+  lv_label_set_text(label, "-9dB");
 
 
 
@@ -612,7 +612,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b5m9, 44);
 
   label = lv_label_create(b5m9, NULL);
-  lv_label_set_text(label, "-9dB");
+  lv_label_set_text(label, "+9dB");
 
 
   lv_obj_t *b5m6 = lv_btn_create(band_5, NULL);
@@ -621,7 +621,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b5m6, 44);
 
   label = lv_label_create(b5m6, NULL);
-  lv_label_set_text(label, "-6dB");
+  lv_label_set_text(label, "+6dB");
 
   lv_obj_t *b5m3 = lv_btn_create(band_5, NULL);
   lv_obj_set_event_cb(b5m3, set_gain);
@@ -629,7 +629,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b5m3, 44);
 
   label = lv_label_create(b5m3, NULL);
-  lv_label_set_text(label, "-3dB");
+  lv_label_set_text(label, "+3dB");
 
   lv_obj_t *b5p0 = lv_btn_create(band_5, NULL);
   lv_obj_set_event_cb(b5p0, set_gain);
@@ -646,7 +646,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b5p3, 44);
 
   label = lv_label_create(b5p3, NULL);
-  lv_label_set_text(label, "+3dB");
+  lv_label_set_text(label, "-3dB");
 
   lv_obj_t *b5p6 = lv_btn_create(band_5, NULL);
   lv_obj_set_event_cb(b5p6, set_gain);
@@ -654,7 +654,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b5p6, 44);
 
   label = lv_label_create(b5p6, NULL);
-  lv_label_set_text(label, "+6dB");
+  lv_label_set_text(label, "-6dB");
 
   lv_obj_t *b5p9 = lv_btn_create(band_5, NULL);
   lv_obj_set_event_cb(b5p9, set_gain);
@@ -662,7 +662,7 @@ void GUI_MainMenuCreate(void) {
   lv_obj_set_width(b5p9, 44);
 
   label = lv_label_create(b5p9, NULL);
-  lv_label_set_text(label, "+9dB");
+  lv_label_set_text(label, "-9dB");
 
   /*
 
